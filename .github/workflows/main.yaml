@@ -3,7 +3,7 @@ name: Main script
 on:
   push:
     tags:
-      - v*
+      - rc-0.0.*
 
 jobs:
   lint:
