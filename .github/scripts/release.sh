@@ -10,10 +10,10 @@ previous_tag=$(git tag | tail -2 | head -n1)
 author=$(git show ${current_tag} | grep Author: | head -1)
 date=$(git show ${current_tag} --date=short| grep Date:)
 changeLog=`git log "${previous_tag}"..${current_tag} --pretty=format:"\n* %h -- %an -- %s;" | tr -s "\n" " "`
-description="ответственный за релиз ${author}\n коммиты, попавшие в релиз:\n ${changeLog} \n ${comment}"
+description="ответственный за релиз ${author:8}\n коммиты, попавшие в релиз:\n ${changeLog} \n ${comment}"
 
 code=$(curl -w "%{http_code}\\n" \
--d '{"summary": "'"Релиз ${current_tag} - ${date:5}"'","description": "'"${description}"'"}' \
+-d '{"summary": "'"Релиз ${current_tag} - ${date:8}"'","description": "'"${description}"'"}' \
 -H "Content-Type: application/json"  \
 -H "Authorization: OAuth ${OAuth}" \
 -H "X-Org-ID: ${OrgId}" \
