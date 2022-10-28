@@ -8,12 +8,12 @@ docker build . -f Dockerfile -t ${current_tag}
 
 if [ $? -ne 0 ]
 then
-    result="Creation docker image faild"
+    result="Creation docker faild"
     echo "$result"
     sh ./.github/scripts/release.sh "$result"
     exit $?
 else
-    result="Created docker image: ${current_tag}"
+    result="Created docker version: ${current_tag}"
     echo "$result"
     sh ./.github/scripts/release.sh "$result"
     exit 0
