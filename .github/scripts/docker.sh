@@ -10,11 +10,11 @@ if [ $? -ne 0 ]
 then
     result="Creation docker faild"
     echo "$result"
-    sh ./.github/scripts/release.sh "$result"
+    bash ./.github/scripts/release.sh "$result"
     exit $?
 else
     result="Created docker version: ${current_tag}"
     echo "$result"
-    sh ./.github/scripts/release.sh "$result"
+    bash ./.github/scripts/release.sh "$result"
     exit 0
 fi
